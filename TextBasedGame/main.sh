@@ -79,7 +79,7 @@ introSeq() {
     echo -n "[ASCII IMAGE]"
     tput sgr0
     echo ""
-    castle
+    entrance
     sleep 5
     echo "+---------------------------------------------------------------------------------------------------+"
     echo "You play as an adventurer who breaks into an ancient, abandoned castle to uncover a forgotten secret."
@@ -108,7 +108,6 @@ introSeq() {
         echo "+-------------------------------------------------+"
         echo ""
         echo -n "Continue? (y/N)"
-        echo ""
         read next
         
         if [[ $next == "y" ]]; then
@@ -174,8 +173,7 @@ room_1() {
 
     elif [[ $nextStep1 == "2" ]]; then
         resetScreen
-        tput blink
-        loadingAnimation "F L I C K E R I N G"
+        torch
         echo ""
         tput sgr0
         echo ""
@@ -196,21 +194,109 @@ room_1() {
 
 }
 
+room_2Puzzle() {
+
+        # RÄTSELLÖSUNG: Zebra Esel Hase Nilpferd = ZEHN = CODE: 10 
+        ROOM=2
+        WHERE="ROOM 2 NAME"
+        resetScreen
+        tput setaf 2
+        echo "INFO: you entered room 2"
+        tput sgr0
+        echo ""
+
+        echo "What would you like to do? (1/2)"
+        echo ""
+        echo "1. Inspect the suspicious wall"
+        echo "2. Inspect the book that is on the desk"
+        echo "3. Leave through the door."
+        echo ""
+        tput setaf 2
+        echo -n "$"
+        tput sgr0
+
+        read auswahl
+
+        if [[ $auswahl == "1" ]]; then
+            resetScreen
+            echo -e "
+                ++++++++++++++++++++++
+                ++++++++++++++++++++++
+                ++++++++++++++++++++++
+                ++++++++++++++++++++++
+                ++++++++++++++++++++++
+                ++++++++++++++++++++++
+                ++++++++++++++++++++++
+            "
+            echo "What would you like to do?(1/2)"
+            echo ""
+            echo "1. Go back"
+            echo ""
+            echo -n "$"
+
+            read answer
+            if [[ $answer == "1" ]]; then
+                room_2Puzzle
+            fi
+
+
+
+        elif [[ $auswahl == "2" ]]; then
+            resetScreen
+            echo -e "
+            +---------------+-----------------+
+            +               +                 +
+            +               +                 +
+            +               +                 +
+            +               +                 +
+            +               +                 +
+            +               +                 +
+            +               +                 +
+            +               +                 +
+            +---------------+-----------------+
+            "
+            echo "'The wall is covered in ancient symbols.'"
+            echo "'The ancient symbols represent animals such as the tiger, elephant and narwhal.'"
+            echo ""
+            echo "What would you like to do?(1/2) "
+            echo ""
+            echo "1. Go back"
+            tput setaf 2
+            echo -n "$"
+            tput sgr0
+
+            read answer2
+
+            if [[ $answer2 == "1" ]]; then
+                room_2Puzzle
+            fi
+
+            
+            
+
+
+        elif [[ $auswahl == "3" ]]; then
+            kapitel1
+        fi
+
+
+}
+
 room_2() {
-    
+    tput setaf 1   
     echo "Please give the 4 digit code to enter ..."
+    tput sgr0
+    echo ""
+    echo "1. To leave"
     echo ""
     tput setaf 2
     echo -n "$ "
     tput sgr0
     read CODE
     if [[ $CODE == 1794 ]]; then
-        ROOM=2
-        WHERE="ROOM 2 NAME"
-        resetScreen
-        tput setaf 1
-        echo "INFO: you entered room 2"
-        tput sgr0
+        room_2Puzzle
+    elif [[ $CODE == "1" ]]; then
+        kapitel1
     else
         echo "Please try again."
         sleep 2
@@ -224,8 +310,17 @@ room_2() {
 }
 
 room_3() {
+    
+    echo "Please type in the code to enter."
 
-    echo "It seems you need a code to open the door ..."
+    read code3
+
+    if [[ $code3 == "10" ]]; then
+        resetScreen
+    fi
+
+
+
 }
 
 resetScreen() {
