@@ -6,6 +6,7 @@ WHERE="ENTRANCE"
 kapitel=0
 declare -a ITEMS
 
+
 helpFunction_1() {
     
 
