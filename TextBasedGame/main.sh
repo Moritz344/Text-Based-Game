@@ -6,6 +6,23 @@ WHERE="ENTRANCE"
 kapitel=0
 declare -a ITEMS
 
+bookshelve() {
+
+    echo -e "
+       .--.                   .---.
+   .---|__|           .-.     |~~~|
+.--|===|--|_          |_|     |~~~|--.
+|  |===|  |'\     .---!~|  .--|   |--|
+|%%|   |  |.'\    |===| |--|%%|   |  |
+|%%|   |  |\.'\   |   | |__|  |   |  |
+|  |   |  | \  \  |===| |==|  |   |  |
+|  |   |__|  \.'\ |   |_|__|  |~~~|__|
+|  |===|--|   \.'\|===|~|--|%%|~~~|--|
+^--^---'--^    ---^-^--^--^---'--' hjw
+"
+
+}
+
 helpFunction_1() {
     
 
@@ -173,7 +190,9 @@ room_1() {
 
     elif [[ $nextStep1 == "2" ]]; then
         resetScreen
+        tput blink
         torch
+        tput sgr0
         echo ""
         tput sgr0
         echo ""
@@ -243,18 +262,7 @@ room_2Puzzle() {
 
         elif [[ $auswahl == "2" ]]; then
             resetScreen
-            echo -e "
-            +---------------+-----------------+
-            +               +                 +
-            +               +                 +
-            +               +                 +
-            +               +                 +
-            +               +                 +
-            +               +                 +
-            +               +                 +
-            +               +                 +
-            +---------------+-----------------+
-            "
+            book
             echo "'The wall is covered in ancient symbols.'"
             echo "'The ancient symbols represent animals such as the tiger, elephant and narwhal.'"
             echo ""
@@ -309,14 +317,69 @@ room_2() {
 
 }
 
+room_3_situation() {
+        ROOM=3
+        WHERE="Home"
+        resetScreen
+        echo ""
+        echo "What would you like to do? (1/2/3) "
+        echo "1. Look at the bookshelves."
+        echo "2. Look at the clock. "
+        echo "3. Leave through the door."
+        echo -n "$ "
+        read answer3
+        tput setaf 2
+        tput sgr0
+
+        if [[ $answer3 == "1" ]]; then
+            resetScreen
+            echo ""
+            bookshelve
+            echo ""
+            echo "What would you like to do?(1/2)"
+            echo ""
+            echo "1. Leave"
+            echo -n "$"
+            read choice
+
+            if [[ $choice == "1" ]]; then
+                room_3_situation
+            fi
+
+
+
+
+        elif [[ $answer3 == "2" ]]; then
+            resetScreen
+        elif [[ $answer3 == "3" ]]; then
+           kapitel1 
+        fi
+}
+
 room_3() {
-    
+    tput setaf 1
     echo "Please type in the code to enter."
+    echo ""
+    tput sgr0
+    echo "1. To Leave."
+    echo ""
+    tput setaf 2
+    echo -n "$ "
+    tput sgr0
 
     read code3
 
     if [[ $code3 == "10" ]]; then
-        resetScreen
+        room_3_situation
+    elif [[ $code3 == "1" ]]; then
+        kapitel1
+
+    else 
+        tput setaf 1
+        echo "Please try again."
+        tput sgr0
+        room_3
+
     fi
 
 
@@ -372,5 +435,6 @@ startGame() {
     kapitel1
 
 }
+tput cnorm
 startGame
 
