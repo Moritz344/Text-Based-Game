@@ -6,6 +6,7 @@ WHERE="ENTRANCE"
 kapitel=0
 declare -a ITEMS
 
+<<<<<<< HEAD
 bookshelve() {
 
     echo -e "
@@ -22,6 +23,8 @@ bookshelve() {
 "
 
 }
+=======
+>>>>>>> a8751fcfc98e571795df8dc82cdb497c26a3fbf5
 
 helpFunction_1() {
     
