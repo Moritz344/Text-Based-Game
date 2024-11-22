@@ -1,12 +1,12 @@
 #!/bin/bash
 source ./sceneAscii.sh
 
+
 ROOM=0
 WHERE="ENTRANCE"
 kapitel=0
 declare -a ITEMS
 
-<<<<<<< HEAD
 bookshelve() {
 
     echo -e "
@@ -18,13 +18,11 @@ bookshelve() {
 |%%|   |  |\.'\   |   | |__|  |   |  |
 |  |   |  | \  \  |===| |==|  |   |  |
 |  |   |__|  \.'\ |   |_|__|  |~~~|__|
-|  |===|--|   \.'\|===|~|--|%%|~~~|--|
+|20|===|--|   \.'\|===|~|--|%%|~~~|--|
 ^--^---'--^    ---^-^--^--^---'--' hjw
 "
 
 }
-=======
->>>>>>> a8751fcfc98e571795df8dc82cdb497c26a3fbf5
 
 helpFunction_1() {
     
@@ -151,6 +149,7 @@ room_1() {
     ROOM=1
     WHERE="ROOM1 NAME"
     Status
+    room_1_ascii
     echo ""
     tput setaf 1
     echo -n "INFO: You entered room 1."
@@ -222,6 +221,7 @@ room_2Puzzle() {
         ROOM=2
         WHERE="ROOM 2 NAME"
         resetScreen
+        room_2_ascii
         tput setaf 2
         echo "INFO: you entered room 2"
         tput sgr0
@@ -245,7 +245,7 @@ room_2Puzzle() {
                 ++++++++++++++++++++++
                 ++++++++++++++++++++++
                 ++++++++++++++++++++++
-                ++++++++++++++++++++++
+                +++?+++?++++?+++++++++
                 ++++++++++++++++++++++
                 ++++++++++++++++++++++
                 ++++++++++++++++++++++
@@ -322,17 +322,19 @@ room_2() {
 
 room_3_situation() {
         ROOM=3
-        WHERE="Home"
+        WHERE="ROOM 3 NAME"
         resetScreen
+        room_3_ascii
         echo ""
         echo "What would you like to do? (1/2/3) "
         echo "1. Look at the bookshelves."
         echo "2. Look at the clock. "
         echo "3. Leave through the door."
-        echo -n "$ "
-        read answer3
+        echo ""
         tput setaf 2
+        echo -n "$ "
         tput sgr0
+        read answer3
 
         if [[ $answer3 == "1" ]]; then
             resetScreen
@@ -342,7 +344,10 @@ room_3_situation() {
             echo "What would you like to do?(1/2)"
             echo ""
             echo "1. Leave"
-            echo -n "$"
+            echo ""
+            tput setaf 2
+            echo -n "$ "
+            tput sgr0
             read choice
 
             if [[ $choice == "1" ]]; then
@@ -354,6 +359,22 @@ room_3_situation() {
 
         elif [[ $answer3 == "2" ]]; then
             resetScreen
+            clock
+            echo "Its currently about 10 to 11 pm"
+            echo ""
+            echo "What would you like to do?(1/2)"
+            echo "1. Leave"
+            echo ""
+            tput setaf 2
+            echo -n "$ "
+            tput sgr0
+            read answer4
+
+            if [[ $answer4 == "1" ]]; then
+                room_3_situation
+            fi
+
+
         elif [[ $answer3 == "3" ]]; then
            kapitel1 
         fi
