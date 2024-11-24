@@ -456,7 +456,7 @@ startGame() {
         #apitel1
     else
         exit
-    #fi
+    fi
     kapitel1
 
 }
