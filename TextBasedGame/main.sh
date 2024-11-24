@@ -448,14 +448,14 @@ kapitel1() {
 
 startGame() {
     #charackter
-    #loadingAnimation "L O A D I N G ..."
-    #sleep 1
-    #introSeq
-    #if [[ $CHOICE == "y" ]]; then
-        #clear
-        #kapitel1
-    #else
-        #exit
+    loadingAnimation "L O A D I N G ..."
+    sleep 1
+    introSeq
+    if [[ $CHOICE == "y" ]]; then
+        clear
+        #apitel1
+    else
+        exit
     #fi
     kapitel1
 
