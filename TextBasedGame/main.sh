@@ -23,10 +23,6 @@ bookshelve() {
 "
 
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 132f047915a8098f6681e0d067825489cd2c6edf
 
 helpFunction_1() {
     
@@ -41,6 +37,32 @@ helpFunction_1() {
 }
 #helpFunction_1
 
+end() {
+    WHERE="ROOM 4"
+    ROOM=4
+    resetScreen
+    echo ""
+    tput setaf 1
+    echo "Please enter the code."
+    tput sgr0
+    echo ""
+    echo "1. To Leave"
+    tput setaf 2
+    echo ""
+    echo -n "$ "
+    tput sgr0
+    read code4
+
+    if [[ $code4 == "2011" || $code4 == "2010" ]]; then
+        tput setaf 2
+        echo "Congrutalions you solved every puzzle!"
+        tput sgr0
+        sleep 3
+    else 
+        kapitel1
+    fi
+
+}
 
 clear
 loadingAnimation() {
@@ -384,6 +406,12 @@ room_3_situation() {
         fi
 }
 
+room_4() {
+    
+    end
+
+}
+
 room_3() {
     tput setaf 1
     echo "Please type in the code to enter."
@@ -427,7 +455,7 @@ kapitel1() {
     echo "There are a lot of rooms infront of you."
     echo ""
     sleep 1
-    echo "Which one will you enter? (1/2/3)"
+    echo "Which one will you enter? (1/2/3/4)"
     tput setaf 2
     echo -n "$ "
     tput sgr0
@@ -440,6 +468,8 @@ kapitel1() {
         room_2
     elif [[ $NUMBER == "3" ]]; then
         room_3
+    elif [[ $NUMBER == "4" ]]; then
+        room_4
     else 
         echo "Please try again."
         echo ""
@@ -451,15 +481,15 @@ kapitel1() {
 
 startGame() {
     #charackter
-    #loadingAnimation "L O A D I N G ..."
-    #sleep 1
-    #introSeq
-    #if [[ $CHOICE == "y" ]]; then
-        #clear
-        #kapitel1
-    #else
-        #exit
-    #fi
+    loadingAnimation "L O A D I N G ..."
+    sleep 1
+    introSeq
+    if [[ $CHOICE == "y" ]]; then
+        clear
+        kapitel1
+    else
+        exit
+    fi
     kapitel1
 
 }
