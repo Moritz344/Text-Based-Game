@@ -486,11 +486,10 @@ startGame() {
     introSeq
     if [[ $CHOICE == "y" ]]; then
         clear
-<<<<<<< HEAD
         kapitel1
-=======
+
         #apitel1
->>>>>>> 5dff02fceae05a0bcf98396b24e912d791cd37e7
+
     else
         exit
     fi
