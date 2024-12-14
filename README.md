@@ -1,4 +1,4 @@
-# Adventure Game in Bash (Game still in work)
+# Adventure Game in Bash 
 
 This is a simple text-based adventure game written in Bash. The game allows the player to explore different rooms of an ancient, abandoned castle in search of a forgotten secret. The player interacts with the world through text input, solving puzzles, avoiding traps, and uncovering hidden mysteries.
 
